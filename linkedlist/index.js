@@ -79,19 +79,9 @@ class LinkedList {
         } else {
             this.head = new Node(data);
         }
-        // if(!this.head){
-        //     this.head = new Node(data);
-        // }
-        // let node = this.head;
-
-        // while(node.next) {
-        //     node = node.next
-        // }
-        // node.next = new Node(data);
     }
 
     getAt(int) {
-        if(!this.head) return null;
         let node = this.head;
         for(let i = 0; i<int; i++) {
             if(!node) return null;
