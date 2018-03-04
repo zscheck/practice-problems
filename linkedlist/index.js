@@ -94,19 +94,31 @@ class LinkedList {
         if(!this.head)return;
         if(int === 0){
             this.head = this.head.next;
+            return;
         }
-        let before= this.getAt(int-1);
-        const node = this.getAt(int);
-        if(!node)return;
-        if(!node.next){
-            before.next = null;
+        const before= this.getAt(int-1);
+        if(!before || !before.next) return;
+    
+        before.next = before.next.next;
+    }
+
+    insertAt(data, int) {
+        if(!this.head){
+            this.head = new Node(data);
+            return;
+        } else if(int === 0){
+            this.head = new Node(data, this.head);
+            return;
         }
-        before.next = node.next;
+        let before = this.getAt(int-1);
+        let existing = this.getAt(int);
+        if(!existing) {
+            let last = this.getLast();
+            last.next = new Node(data);
+            return;
+        }
+        before.next = new Node(data, existing);
     }
 }
-
-// const list = new LinkedList();
-// list.insertFirst()
-// list.head = new Node(10);
 
 module.exports = { Node, LinkedList };
